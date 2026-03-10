@@ -1,0 +1,61 @@
+# Configuration File / 配置文件
+# Edit this file to customize crawler behavior
+
+settings:
+  # Network Settings / 网络设置
+  delay_between_requests: 1.5  # Seconds between requests
+  max_retries: 3  # Maximum retry attempts per request
+  timeout: 30  # Request timeout in seconds
+  concurrent_requests: 10  # Max concurrent requests (for advanced usage)
+  
+  # Anti-Scraping / 反爬策略
+  use_random_delay: true  # Enable random delays between requests
+  rotate_user_agent: true  # Rotate user agents per request
+  rotate_proxy: true  # Rotate proxies per request
+  
+  # Rate Limiting / 频率控制
+  crawl_rate_limit: 2  # Requests per second
+  
+proxies:
+  enabled: false  # Set to true to enable proxy rotation
+  providers: []  # Add your proxy provider URLs here
+  rotation_interval: 10  # Rotate after N requests
+  
+storage:
+  # Default output settings / 默认输出设置
+  default_format: csv  # Options: csv, json, xlsx
+  output_dir: ./outputs
+  
+  # Database options (optional) / 数据库选项（可选）
+  mysql:
+    host: localhost
+    port: 3306
+    database: crawl_data
+    username: root
+    password: ""
+    
+  mongodb:
+    uri: mongodb://localhost:27017/
+    database: crawl_data
+    
+logging:
+  level: INFO  # Options: DEBUG, INFO, WARNING, ERROR
+  file: logs/crawler.log
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+examples:
+  simple_scraper:
+    target_url: "https://example.com"
+    items_to_extract: 10
+    save_to: "./output/simple.csv"
+    
+  pagination_scraper:
+    base_url: "https://example.com/list"
+    pages: 5
+    extract_links: true
+    
+  login_scraper:
+    login_url: "https://example.com/login"
+    username_field: "username"
+    password_field: "password"
+    # Note: Store credentials securely!
