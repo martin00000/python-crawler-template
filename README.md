@@ -130,6 +130,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📧 Contact / 联系
 
-Your Name - your@email.com
+alan - dingying02@gmail.com
 
 Project Link: https://github.com/martin00000/python-crawler-template
